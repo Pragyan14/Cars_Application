@@ -5,8 +5,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
             body {
-                font-family: cursive;
+                font-family: "Roboto Mono", monospace;
                 background-color: #f0f0f0;
                 display: flex;
                 justify-content: center;
@@ -52,11 +53,8 @@
         <div class="login-container">
             <h2 class="form-title">Login</h2>
             <form action="LoginServlet" method="post">
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br><br>
-
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" required><br><br>
+                <input type="email" id="email" name="email" placeholder="email" required><br><br>
+                <input type="password" id="password" name="password" placeholder="password" required><br><br>
 
                 <input type="submit" value="Login">
             </form>

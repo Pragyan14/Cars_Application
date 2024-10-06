@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            color: white;
+        }
+        .navbar .nav-links {
+            list-style-type: none;
+            display: flex;
+        }
+        .navbar .nav-links li {
+            margin-left: 32px;
+        }
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .nav-links i {
+            margin-right: 5px;
+            font-size: 20px;
+        }
+        .navbar .nav-links a:hover {
+            color: #ddd;
+        }
+        /* Profile Section */
+        .profile-container {
+            display: flex;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .profile-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #2d87f0;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .profile-right {
+            flex: 2;
+            padding: 20px;
+        }
+
+        .profile-info {
+            margin-bottom: 20px;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .add-car-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-car-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Car Cards Section */
+        .car-container {
+            display: grid; /* Use CSS Grid layout */
+            grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+            gap: 20px; /* Space between cards */
+            width: 100%; /* Limit container width */
+            margin: 0 auto; /* Center the grid */
+            height: 90vh;
+        }
+        
+        .car {
+            border: 1px solid #ddd; /* Border around the card */
+            padding: 10px; /* Padding inside the card */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+            background-color: #fff; /* Card background color */
+            height: 250px;
+        }
+        
+        .car img {
+            width: 100%; /* Full width of the card */
+            height: 150px; /* Fixed height for images */
+            object-fit: cover; /* Cover the entire image area */
+            border-radius: 10px 10px 0 0; /* Rounded corners on the top */
+        }
+        
+        .car h2 {
+            font-size: 18px; /* Title font size */
+            margin-top: 10px; /* Space above title */
+        }
+        
+        .car p {
+            font-size: 14px; /* Paragraph font size */
+            color: #666; /* Text color */
+        }
+
+        @media (max-width: 768px) {
+            .car-cards-container {
+                grid-template-columns: repeat(2, 1fr); /* Display 2 cards per row on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .car-cards-container {
+                grid-template-columns: 1fr; /* Display 1 card per row on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-ghost"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="viewCar.jsp"><i class="fa-solid fa-car"></i>Cars</a></li>
+            <li><a href="service.jsp"><i class="fa-solid fa-cogs"></i>Services</a></li>
+            <li><a href="profile.jsp"><i class="fa-solid fa-user"></i>Profile</a></li>
+        </ul>
+    </div>
+
+<!-- Profile Section -->
+<div class="profile-container">
+    <div class="profile-left">
+        <div class="profile-circle">
+            <!-- First name initial, can be dynamic using Java/JSP -->
+            <span>P</span>
+        </div>
+    </div>
+    <div class="profile-right">
+        <div class="profile-info">
+            <p><strong>Full Name:</strong> Pragyan Patidar</p>
+            <p><strong>Email:</strong> pragyan@example.com</p>
+            <p><strong>Phone:</strong> 123-456-7890</p>
+            <p><strong>City:</strong> Indore</p>
+            <p><strong>State:</strong> Madhya Pradesh</p>
+        </div>
+        <!-- Add Car button -->
+        <button class="add-car-button">Add Car</button>
+    </div>
+</div>
+
+<!-- Car Cards Section -->
+<div class="car-container">
+    <div class="car">
+        <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
+        <h2>Mini Copper</h2>
+        <p>New York, NY</p>
+        <h3>$ 450000</h3>
+    </div>
+    <div class="car">
+        <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
+        <h2>Mini Copper</h2>
+        <p>New York, NY</p>
+        <h3>$ 450000</h3>
+    </div>
+</div>
+
+</body>
+</html>
