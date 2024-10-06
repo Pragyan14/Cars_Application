@@ -58,6 +58,10 @@
 
                 <input type="submit" value="Login">
             </form>
+            <% String m = (String)request.getAttribute("error");
+                if (m != null) { %>
+                 <p class="error-message"><%= m %></p>
+            <% } %>
         </div>
     </body>
 </html>
