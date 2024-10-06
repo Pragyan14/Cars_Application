@@ -4,11 +4,14 @@
  */
 package com.vit.pojo;
 
+import java.util.Base64;
+
 /**
  *
  * @author SREEJIT BAKSHI
  */
 public class Car {
+    private int id;
     private String model;
     private String regNum;
     private String color;
@@ -16,10 +19,11 @@ public class Car {
     private int kmDriven;       // Assuming kmDriven is an integer
     private String gear;
     private double price;       // Assuming price is a double
-    private int userId;         // Foreign key to associate with the user
-
+    private String userEmail; // Assuming you want to store the user's email
+    private byte[] picture;
+    
     // Constructor with all fields
-    public Car(String model, String regNum, String color, String fuel, int kmDriven, String gear, double price, int userId) {
+    public Car(String model, String regNum, String color, String fuel, int kmDriven, String gear, double price, String userEmail, byte[] picture) {
         this.model = model;
         this.regNum = regNum;
         this.color = color;
@@ -27,11 +31,12 @@ public class Car {
         this.kmDriven = kmDriven;
         this.gear = gear;
         this.price = price;
-        this.userId = userId;
+        this.userEmail = userEmail;
+        this.picture = picture;
     }
 
     public Car() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getModel() {
@@ -90,11 +95,31 @@ public class Car {
         this.price = price;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+    
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getBase64Picture() {
+        return picture != null ? Base64.getEncoder().encodeToString(picture) : null;
     }
 }
