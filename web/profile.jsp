@@ -168,14 +168,14 @@
             <h2>Mini Copper</h2>
             <p>New York, NY</p>
             <h3>$ 450000</h3>
-            <a href="viewCar">More info..</a>
+            <a href="carDetail.jsp">More info..</a>
         </div>
         <div class="car">
             <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
             <h2>Mini Copper</h2>
             <p>New York, NY</p>
             <h3>$ 450000</h3>
-            <a href="viewCar">More info..</a>
+            <a href="carDetail.jsp">More info..</a>
         </div>
     </div>
 
