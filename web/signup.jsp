@@ -75,8 +75,8 @@
 <body>
 
     <div class="signup-form">
-        <h2>Signup</h2>
         <form action="SignUpServlet" method="post">
+            <h2>Signup</h2>
             <input type="text" name="name" placeholder="Name" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>

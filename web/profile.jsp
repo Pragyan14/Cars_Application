@@ -20,7 +20,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-         <jsp:include page="Include/header_footer_css.jsp" />
+        <jsp:include page="Include/header_footer_css.jsp" />
          
         /* Profile Section */
         .profile-container {
