@@ -31,7 +31,7 @@ public class UserDAO {
     private UserDAO() {
         try{            
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres", "12345");
+            con = DriverManager.getConnection("jdbc:postgresql://pg-3e2bc955-rakeshmeher.i.aivencloud.com:17051/defaultdb?ssl=require&user=avnadmin&password=AVNS_vD-_piUR0bgJFpyhNQo");
             System.out.println("Connection Object--------->"+con);
             stmt=con.createStatement();
         }
@@ -40,41 +40,42 @@ public class UserDAO {
         }
     }
     
-    public ArrayList executeSearch(String searchString){
-        ArrayList userList = new ArrayList();
-        try{
-            System.out.println("SEARCH"+searchString);
-            rs= stmt.executeQuery("select * from \"userdata\" "
-                    + "where uname like'%"+searchString+"%'");
-            while(rs.next()){
-                User user = new User(
-                    rs.getString(1), rs.getString(2), rs.getString(4),rs.getString(5),
-                    rs.getInt(3));
-                userList.add(user);
-            }         
-            
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        return userList;
-    }
+//    public ArrayList executeSearch(String searchString){
+//        ArrayList userList = new ArrayList();
+//        try{
+//            System.out.println("SEARCH"+searchString);
+//            rs= stmt.executeQuery("select * from \"userdata\" "
+//                    + "where uname like'%"+searchString+"%'");
+//            while(rs.next()){
+//                User user = new User(
+//                    rs.getString(1), rs.getString(2), rs.getString(4),rs.getString(5),
+//                    rs.getInt(3));
+//                userList.add(user);
+//            }         
+//            
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        return userList;
+//    }
     
     public boolean executeInsert(User user){
         try{
-            pStmt = con.prepareStatement("insert into \"userdata\" values(?,?,?,?,?)");
-            pStmt.setString(1,user.getUserId());
-            pStmt.setString(2,user.getUserName());
-            pStmt.setString(4,user.getEmailId());
-            pStmt.setString(5,user.getPassword());
-            pStmt.setInt(3,user.getAge());
+            pStmt = con.prepareStatement("insert into \"user\" (\"userName\", \"emailId\", \"password\", \"city\", \"state\", \"phone\") values(?,?,?,?,?,?)");
+            pStmt.setString(1,user.getUserName());
+            pStmt.setString(2,user.getEmailId());
+            pStmt.setString(3,user.getPassword());
+            pStmt.setString(4,user.getCity());
+            pStmt.setString(5,user.getState());
+            pStmt.setString(6,user.getPhone());
             int rowCount= pStmt.executeUpdate();
             if(rowCount >0){
                 return true;
             }
             
         }
-        catch(Exception e){
+        catch(SQLException e){
             e.printStackTrace();
         }
         return false;
