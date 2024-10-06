@@ -32,8 +32,7 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
-            margin-left : 100px;
-      	
+            margin-left: 100px;
         }
         .signup-form button {
             width: 65%;
@@ -47,6 +46,12 @@
         }
         .signup-form button:hover {
             background-color: #45a049;
+        }
+        .error-message {
+            font-family: verdana;
+            color: red;
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -63,11 +68,11 @@
             <input type="text" name="state" placeholder="State" required>
             <button type="submit">Sign Up</button>
         </form>
+        <% String m = (String)request.getAttribute("error");
+           if (m != null) { %>
+            <p class="error-message"><%= m %></p>
+        <% } %>
     </div>
-    <% String m = (String)request.getAttribute("error");
-    if(m!=null){ %>
-    <p style="font-family:verdana;color:red"><%= m %></p>
-    } %>
 
 </body>
 </html>
