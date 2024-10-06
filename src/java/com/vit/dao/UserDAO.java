@@ -48,7 +48,6 @@ public class UserDAO {
             pStmt.setString(4,user.getCity());
             pStmt.setString(5,user.getState());
             pStmt.setString(6,user.getPhone());
-            System.out.println(getQueryWithParameters(pStmt, user.getUserName(), user.getEmailId(), user.getPassword(), user.getCity(), user.getState(), user.getPhone()));
             int rowCount= pStmt.executeUpdate();
             if(rowCount >0){
                 return true;
@@ -59,12 +58,5 @@ public class UserDAO {
             e.printStackTrace();
         }
         return false;
-    }
-    private static String getQueryWithParameters(PreparedStatement pstmt, String... params) {
-        String sql = pstmt.toString(); // This will print the SQL string with "?" placeholders
-        for (String param : params) {
-            sql = sql.replaceFirst("\\?", "'" + param + "'"); // Replace the first occurrence of "?" with the parameter
-        }
-        return sql;
     }
 }
