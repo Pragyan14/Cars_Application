@@ -13,14 +13,18 @@ public class User {
     private String userName;
     private String emailId;
     private String password;
-    private int age;
+    private String city;
+    private String state;
+    private String phone;
 
-    public User(String userId, String userName, String emailId, String password, int age) {
+    public User(String userId, String userName, String emailId, String password, String city, String state, String phone) {
         this.userId = userId;
         this.userName = userName;
         this.emailId = emailId;
         this.password = password;
-        this.age = age;
+        this.city = city;
+        this.state = state;
+        this.phone = phone;
     }
 
     public User() {
@@ -58,13 +62,28 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public int getAge() {
-        return age;
+    
+    public String getCity() {
+        return city;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
     
-    public void setAge(int age) {
-        this.age = age;
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+    
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
