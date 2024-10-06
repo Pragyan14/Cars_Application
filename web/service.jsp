@@ -69,18 +69,14 @@
 
 <div class="service-form">
     <h2>Request Car Service</h2>
-    <form>
+    <form action="RequestServiceServlet" method="post">
         <label for="carModel">Car Model:</label>
         <input type="text" id="carModel" name="carModel" required>
 
-        <label for="problem">Problem:</label>
+        <label for="problem">Describe the Problem:</label>
         <textarea id="problem" name="problem" rows="4" required></textarea>
 
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address" required>
-
-        <label for="mobile">Mobile Number:</label>
-        <input type="tel" id="mobile" name="mobile" required>
+        <input type="hidden" value="1" name="userId" />
 
         <button type="submit">Submit Request</button>
     </form>
