@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class UserDAO {
     public Connection con = null;
     public Statement stmt = null;
+    
     public ResultSet rs=null;
     public PreparedStatement pStmt=null;
     
