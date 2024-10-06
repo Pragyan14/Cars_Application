@@ -59,4 +59,17 @@ public class UserDAO {
         }
         return false;
     }
+    
+    public boolean executeSelect(String email, String password){
+        try{
+            rs= stmt.executeQuery("select * from \"users\" where email = "+email+" and password = "+password);
+            if(rs.getRow() > 0){
+                return true;
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -4,18 +4,28 @@
  */
 package com.vit;
 
+import com.vit.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author SREEJIT BAKSHI
  */
 public class LoginServlet extends HttpServlet {
+    HttpSession session=null;
+    UserDAO userDAO=null;
+    
+    @Override
+    public void init() {
+        // Initialize the UserDAO singleton instance
+        this.userDAO = UserDAO.getInstance();
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,7 +79,20 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        
+        boolean isPresent = userDAO.executeSelect(email, password);
+        
+        if (isPresent) {
+            session = request.getSession();
+            session.setAttribute("name", request.getParameter("name"));
+            session.setAttribute("email", request.getParameter("email"));
+            response.sendRedirect("index.jsp");
+        } else {
+            request.setAttribute("error","INVALID CREDENTIALS");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
 
     /**
