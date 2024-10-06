@@ -6,7 +6,6 @@ package com.vit.dao;
 
 import com.vit.pojo.User;
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  *
@@ -39,26 +38,6 @@ public class UserDAO {
             e.printStackTrace();            
         }
     }
-    
-//    public ArrayList executeSearch(String searchString){
-//        ArrayList userList = new ArrayList();
-//        try{
-//            System.out.println("SEARCH"+searchString);
-//            rs= stmt.executeQuery("select * from \"userdata\" "
-//                    + "where uname like'%"+searchString+"%'");
-//            while(rs.next()){
-//                User user = new User(
-//                    rs.getString(1), rs.getString(2), rs.getString(4),rs.getString(5),
-//                    rs.getInt(3));
-//                userList.add(user);
-//            }         
-//            
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//        }
-//        return userList;
-//    }
     
     public boolean executeInsert(User user){
         try{
