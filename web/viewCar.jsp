@@ -29,7 +29,7 @@
             border-radius: 10px; /* Rounded corners */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
             background-color: #fff; /* Card background color */
-            height: 250px;
+            height: 280px;
         }
         
         .car img {
@@ -48,26 +48,43 @@
             font-size: 14px; /* Paragraph font size */
             color: #666; /* Text color */
         }
-        
+        .searchBar{
+            text-align:center;
+            margin:16px 0;
+        }
+        .searchBar input{
+            height:32px;
+        }
     </style>
 </head>
 <body>
 <jsp:include page="Include/Header.jsp" />
-
+<div>
+    <div class="searchBar">
+        <form>
+            <input type="text" placeholder="Search by model" name="modelName"/>
+            <input type="submit" value="Search"/>
+        </form>
+    </div>
+    
     <div class="car-container">
         <div class="car">
             <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
             <h2>Mini Copper</h2>
             <p>New York, NY</p>
             <h3>$ 450000</h3>
+            <a href="carDetail.jsp">More Info..</a>
         </div>
         <div class="car">
             <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
             <h2>Mini Copper</h2>
             <p>New York, NY</p>
             <h3>$ 450000</h3>
+            <a href="carDetail.jsp">More Info..</a>
         </div>
     </div>
+</div>
+  
 
 <jsp:include page="Include/Footer.jsp" />
 </body>
