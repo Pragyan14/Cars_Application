@@ -62,14 +62,23 @@ public class UserDAO {
     
     public boolean executeSelect(String email, String password){
         try{
-            rs= stmt.executeQuery("select * from \"users\" where email = "+email+" and password = "+password);
-            if(rs.getRow() > 0){
-                return true;
-            }
+            pStmt = con.prepareStatement("select * from \"users\" where emailid = ? and password = ?");
+            pStmt.setString(1,email);
+            pStmt.setString(2,password);
+            System.out.println(getQueryWithParameters(pStmt, email, password));
+            rs = pStmt.executeQuery();
+            return rs.next();
         }
         catch(SQLException e){
             e.printStackTrace();
         }
         return false;
+    }
+    private String getQueryWithParameters(PreparedStatement pstmt, String... params) {
+        String sql = pstmt.toString(); // Get the SQL string
+        for (String param : params) {
+            sql = sql.replaceFirst("\\?", "'" + param + "'"); // Replace placeholders
+        }
+        return sql;
     }
 }
