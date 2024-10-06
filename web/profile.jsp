@@ -123,7 +123,42 @@
             font-size: 14px; /* Paragraph font size */
             color: #666; /* Text color */
         }
+        
+        .button-24 {
+          background: #FF4742;
+          border: 1px solid #FF4742;
+          border-radius: 6px;
+          box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+          box-sizing: border-box;
+          color: #FFFFFF;
+          cursor: pointer;
+          display: inline-block;
+          font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+          font-size: 16px;
+          font-weight: 800;
+          line-height: 16px;
+          min-height: 40px;
+          outline: 0;
+          padding: 12px 14px;
+          text-align: center;
+          text-rendering: geometricprecision;
+          text-transform: none;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          vertical-align: middle;
+        }
 
+        .button-24:hover,
+        .button-24:active {
+          background-color: initial;
+          background-position: 0 0;
+          color: #FF4742;
+        }
+
+        .button-24:active {
+          opacity: .5;
+        }
         @media (max-width: 768px) {
             .car-cards-container {
                 grid-template-columns: repeat(2, 1fr); /* Display 2 cards per row on smaller screens */
@@ -169,6 +204,7 @@
             <p>New York, NY</p>
             <h3>$ 450000</h3>
             <a href="carDetail.jsp">More info..</a>
+            <button class="button-24" role="button">Delete</button>
         </div>
         <div class="car">
             <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
@@ -176,6 +212,7 @@
             <p>New York, NY</p>
             <h3>$ 450000</h3>
             <a href="carDetail.jsp">More info..</a>
+            <button class="button-24" role="button">Delete</button>
         </div>
     </div>
 
