@@ -87,7 +87,7 @@ public class LoginServlet extends HttpServlet {
         if (isPresent) {
             session = request.getSession();
             session.setAttribute("name", request.getParameter("name"));
-            session.setAttribute("email", request.getParameter("email"));
+            session.setAttribute("email", email);
             response.sendRedirect("index.jsp");
         } else {
             request.setAttribute("error","INVALID CREDENTIALS");
