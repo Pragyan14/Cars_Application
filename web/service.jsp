@@ -6,6 +6,7 @@
     <title>Car Service Request</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        <jsp:include page="Include/header_footer_css.jsp" />
         * {
             margin: 0;
             padding: 0;
@@ -17,44 +18,9 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
         }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            padding: 10px ;
-            margin-top: -20px;
-            width: 100%;
-        }
-        .navbar .logo {
-            font-size: 24px;
-            color: white;
-            margin-left: 20px;
-        }
-        .navbar .nav-links {
-            list-style-type: none;
-            display: flex;
-            margin-right: 20px;
-        }
-        .navbar .nav-links li {
-            margin-left: 20px;
-        }
-        .navbar .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-        }
-        .navbar .nav-links i {
-            margin-right: 5px;
-            font-size: 20px;
-        }
-        .navbar .nav-links a:hover {
-            color: #ddd;
-        }
+      
         .service-form {
             background-color: white;
             border-radius: 8px;
@@ -86,29 +52,12 @@
         .service-form button:hover {
             background-color: #555;
         }
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: auto;
-            margin-bottom:-20px; 
-            width: 100%; 
-        }
+       
     </style>
 </head>
 <body>
 
-<div class="navbar">
-    <div class="logo">
-        <i class="fa-solid fa-ghost"></i>
-    </div>
-    <ul class="nav-links">
-        <li><a href="viewCar.jsp"><i class="fa-solid fa-car"></i>Cars</a></li>
-        <li><a href="service.jsp"><i class="fa-solid fa-cogs"></i>Services</a></li>
-        <li><a href="profile.jsp"><i class="fa-solid fa-user"></i>Profile</a></li>
-    </ul>
-</div>
+<jsp:include page="Include/Header.jsp" />
 
 <div class="service-form">
     <h2>Request Car Service</h2>
@@ -129,9 +78,6 @@
     </form>
 </div>
 
-<div class="footer">
-    Made by Sreejit, Pragyan, Manish, Rakesh, Shreya
-</div>
-
+<jsp:include page="Include/Footer.jsp" />
 </body>
 </html>

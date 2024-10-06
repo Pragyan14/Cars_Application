@@ -20,38 +20,8 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            padding: 10px 20px;
-        }
-        .navbar .logo {
-            font-size: 24px;
-            color: white;
-        }
-        .navbar .nav-links {
-            list-style-type: none;
-            display: flex;
-        }
-        .navbar .nav-links li {
-            margin-left: 32px;
-        }
-        .navbar .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-        }
-        .navbar .nav-links i {
-            margin-right: 5px;
-            font-size: 20px;
-        }
-        .navbar .nav-links a:hover {
-            color: #ddd;
-        }
+         <jsp:include page="Include/header_footer_css.jsp" />
+         
         /* Profile Section */
         .profile-container {
             display: flex;
@@ -102,14 +72,17 @@
         }
 
         .add-car-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding for the button */
+            font-size: 16px; /* Font size */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Make it an inline-block for proper spacing */
+            text-align: center; /* Center text */
+}
 
         .add-car-button:hover {
             background-color: #45a049;
@@ -165,53 +138,45 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <i class="fa-solid fa-ghost"></i>
+    <jsp:include page="Include/Header.jsp" />
+
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <div class="profile-left">
+            <div class="profile-circle">
+                <!-- First name initial, can be dynamic using Java/JSP -->
+                <span><%= ((String) session.getAttribute("name")).charAt(0) %></span>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="viewCar.jsp"><i class="fa-solid fa-car"></i>Cars</a></li>
-            <li><a href="service.jsp"><i class="fa-solid fa-cogs"></i>Services</a></li>
-            <li><a href="profile.jsp"><i class="fa-solid fa-user"></i>Profile</a></li>
-        </ul>
+        <div class="profile-right">
+            <div class="profile-info">
+                <p><strong>Full Name:</strong> <%= session.getAttribute("name") %></p>
+                <p><strong>Email:</strong> <%= session.getAttribute("email") %></p>
+                <p><strong>Phone:</strong> <%= session.getAttribute("phone") %></p>
+                <p><strong>City:</strong> <%= session.getAttribute("city") %></p>
+                <p><strong>State:</strong> <%= session.getAttribute("state") %></p>
+            </div>
+            <!-- Add Car button -->
+            <a href="addCar.jsp" class="add-car-button">Add Car</a>
+        </div>
     </div>
 
-<!-- Profile Section -->
-<div class="profile-container">
-    <div class="profile-left">
-        <div class="profile-circle">
-            <!-- First name initial, can be dynamic using Java/JSP -->
-            <span><%= ((String) session.getAttribute("name")).charAt(0) %></span>
+    <!-- Car Cards Section -->
+    <div class="car-container">
+        <div class="car">
+            <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
+            <h2>Mini Copper</h2>
+            <p>New York, NY</p>
+            <h3>$ 450000</h3>
+        </div>
+        <div class="car">
+            <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
+            <h2>Mini Copper</h2>
+            <p>New York, NY</p>
+            <h3>$ 450000</h3>
         </div>
     </div>
-    <div class="profile-right">
-        <div class="profile-info">
-            <p><strong>Full Name:</strong> <%= session.getAttribute("name") %></p>
-            <p><strong>Email:</strong> <%= session.getAttribute("email") %></p>
-            <p><strong>Phone:</strong> <%= session.getAttribute("phone") %></p>
-            <p><strong>City:</strong> <%= session.getAttribute("city") %></p>
-            <p><strong>State:</strong> <%= session.getAttribute("state") %></p>
-        </div>
-        <!-- Add Car button -->
-        <button class="add-car-button">Add Car</button>
-    </div>
-</div>
 
-<!-- Car Cards Section -->
-<div class="car-container">
-    <div class="car">
-        <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
-        <h2>Mini Copper</h2>
-        <p>New York, NY</p>
-        <h3>$ 450000</h3>
-    </div>
-    <div class="car">
-        <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
-        <h2>Mini Copper</h2>
-        <p>New York, NY</p>
-        <h3>$ 450000</h3>
-    </div>
-</div>
-
+    <jsp:include page="Include/Footer.jsp" />
 </body>
 </html>

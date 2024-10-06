@@ -6,44 +6,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Car Listings</title>
     <style>
+        <jsp:include page="Include/header_footer_css.jsp" />
         * {
             font-family: "Roboto Mono", monospace;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            padding: 10px 20px;
-        }
-        .navbar .logo {
-            font-size: 24px;
-            color: white;
-        }
-        .navbar .nav-links {
-            list-style-type: none;
-            display: flex;
-        }
-        .navbar .nav-links li {
-            margin-left: 32px;
-        }
-        .navbar .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-        }
-        .navbar .nav-links i {
-            margin-right: 5px;
-            font-size: 20px;
-        }
-        .navbar .nav-links a:hover {
-            color: #ddd;
-        }
+        
         .car-container {
             display: grid; /* Use CSS Grid layout */
             grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
@@ -78,27 +48,12 @@
             font-size: 14px; /* Paragraph font size */
             color: #666; /* Text color */
         }
-        .footer {
-            margin-top: auto;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-        }
+        
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <i class="fa-solid fa-ghost"></i>
-        </div>
-        <ul class="nav-links">
-            <li><a href="viewCar.jsp"><i class="fa-solid fa-car"></i>Cars</a></li>
-            <li><a href="service.jsp"><i class="fa-solid fa-cogs"></i>Services</a></li>
-            <li><a href="profile.jsp"><i class="fa-solid fa-user"></i>Profile</a></li>
-        </ul>
-    </div>
+<jsp:include page="Include/Header.jsp" />
+
     <div class="car-container">
         <div class="car">
             <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
@@ -113,8 +68,7 @@
             <h3>$ 450000</h3>
         </div>
     </div>
-    <div class="footer">
-        Made with <i class="fa-solid fa-heart" ></i> by Sreejit, Pragyan, Manish, Rakesh, Shreya
-    </div>
+
+<jsp:include page="Include/Footer.jsp" />
 </body>
 </html>
