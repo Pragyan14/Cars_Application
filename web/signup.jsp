@@ -64,6 +64,10 @@
             <button type="submit">Sign Up</button>
         </form>
     </div>
+    <% String m = (String)request.getAttribute("error");
+    if(m!=null){ %>
+    <p style="font-family:verdana;color:red"><%= m %></p>
+    } %>
 
 </body>
 </html>

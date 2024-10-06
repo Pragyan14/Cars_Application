@@ -96,7 +96,7 @@ public class SignUpServlet extends HttpServlet {
                 response.sendRedirect("index.jsp");
             } else {
                 request.setAttribute("error","NEW USER CREATION FAILED");
-                request.getRequestDispatcher("NewUser.jsp").forward(request, response);
+                request.getRequestDispatcher("signup.jsp").forward(request, response);
             }
         }
         catch(IOException | ServletException e){
