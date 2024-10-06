@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>BY Sreejit</h1>
+        <h1>Horny Aliens</h1>
     </body>
 </html>
