@@ -54,7 +54,7 @@
 
     <div class="signup-form">
         <h2>Signup</h2>
-        <form action="signup_action.jsp" method="post">
+        <form action="SignUpServlet" method="post">
             <input type="text" name="name" placeholder="Name" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
