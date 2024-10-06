@@ -92,8 +92,12 @@ public class SignUpServlet extends HttpServlet {
             
             if (hasInserted) {
                 session = request.getSession();
-                session.setAttribute("name", request.getParameter("name"));
-                session.setAttribute("email", request.getParameter("email"));
+                session.setAttribute("name", user.getUserName());
+                session.setAttribute("email", user.getEmailId());
+                session.setAttribute("city", user.getCity());
+                session.setAttribute("state", user.getState());
+                session.setAttribute("phone", user.getPhone());
+                
                 response.sendRedirect("index.jsp");
             } else {
                 request.setAttribute("error","NEW USER CREATION FAILED");

@@ -7,6 +7,7 @@ package com.vit;
 import com.vit.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -81,16 +82,27 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        boolean isPresent = userDAO.executeSelect(email, password);
-        
-        if (isPresent) {
-            session = request.getSession();
-            session.setAttribute("name", request.getParameter("name"));
-            session.setAttribute("email", email);
-            response.sendRedirect("index.jsp");
-        } else {
-            request.setAttribute("error","INVALID CREDENTIALS");
+
+        ResultSet rs = null; // Initialize ResultSet
+        try {
+            rs = userDAO.executeSelect(email, password);
+
+            if (rs != null && rs.next()) {
+                session = request.getSession();
+                session.setAttribute("name", rs.getString("username"));
+                session.setAttribute("email", rs.getString("emailid"));
+                session.setAttribute("city", rs.getString("city"));
+                session.setAttribute("state", rs.getString("state"));
+                session.setAttribute("phone", rs.getString("phone"));
+
+                response.sendRedirect("index.jsp");
+            } else {
+                request.setAttribute("error", "INVALID CREDENTIALS");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("error", "An error occurred during login.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

@@ -60,19 +60,19 @@ public class UserDAO {
         return false;
     }
     
-    public boolean executeSelect(String email, String password){
+    public ResultSet executeSelect(String email, String password){
         try{
             pStmt = con.prepareStatement("select * from \"users\" where emailid = ? and password = ?");
             pStmt.setString(1,email);
             pStmt.setString(2,password);
             System.out.println(getQueryWithParameters(pStmt, email, password));
             rs = pStmt.executeQuery();
-            return rs.next();
+            return rs;
         }
         catch(SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
     private String getQueryWithParameters(PreparedStatement pstmt, String... params) {
         String sql = pstmt.toString(); // Get the SQL string

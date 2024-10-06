@@ -181,16 +181,16 @@
     <div class="profile-left">
         <div class="profile-circle">
             <!-- First name initial, can be dynamic using Java/JSP -->
-            <span>P</span>
+            <span><%= ((String) session.getAttribute("name")).charAt(0) %></span>
         </div>
     </div>
     <div class="profile-right">
         <div class="profile-info">
-            <p><strong>Full Name:</strong> Pragyan Patidar</p>
-            <p><strong>Email:</strong> pragyan@example.com</p>
-            <p><strong>Phone:</strong> 123-456-7890</p>
-            <p><strong>City:</strong> Indore</p>
-            <p><strong>State:</strong> Madhya Pradesh</p>
+            <p><strong>Full Name:</strong> <%= session.getAttribute("name") %></p>
+            <p><strong>Email:</strong> <%= session.getAttribute("email") %></p>
+            <p><strong>Phone:</strong> <%= session.getAttribute("phone") %></p>
+            <p><strong>City:</strong> <%= session.getAttribute("city") %></p>
+            <p><strong>State:</strong> <%= session.getAttribute("state") %></p>
         </div>
         <!-- Add Car button -->
         <button class="add-car-button">Add Car</button>
