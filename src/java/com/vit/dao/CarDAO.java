@@ -96,20 +96,83 @@ public class CarDAO {
         return carList;
     }
     
-//    public ResultSet executeSelect(String email, String password){
-//        try{
-//            pStmt = con.prepareStatement("select * from \"users\" where emailid = ? and password = ?");
-//            pStmt.setString(1,email);
-//            pStmt.setString(2,password);
-//            System.out.println(getQueryWithParameters(pStmt, email, password));
-//            rs = pStmt.executeQuery();
-//            return rs;
-//        }
-//        catch(SQLException e){
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    public List<Car> getCars() {
+        List<Car> carList = new ArrayList<>();
+        try {
+            pStmt = con.prepareStatement("SELECT * FROM \"cars\"");
+            rs = pStmt.executeQuery();
+            while (rs.next()) {
+                Car car = new Car();
+                car.setId(rs.getInt("carid"));
+                car.setModel(rs.getString("model"));
+                car.setRegNum(rs.getString("regnum"));
+                car.setColor(rs.getString("color"));
+                car.setFuel(rs.getString("fuel"));
+                car.setKmDriven(rs.getInt("km_driven"));
+                car.setGear(rs.getString("gear"));
+                car.setPrice(rs.getDouble("price"));
+                car.setUserEmail(rs.getString("useremail"));
+                car.setPicture(rs.getBytes("picture"));
+                carList.add(car);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // This will help identify any SQL issues
+        }
+        return carList;
+    }
+    
+    public List<Car> getCarsbyModel(String model) {
+        List<Car> carList = new ArrayList<>();
+        try {
+            pStmt = con.prepareStatement("SELECT * FROM \"cars\" WHERE model ilike ?");
+            pStmt.setString(1, "%"+model+"%");
+            rs = pStmt.executeQuery();
+            while (rs.next()) {
+                Car car = new Car();
+                car.setId(rs.getInt("carid"));
+                car.setModel(rs.getString("model"));
+                car.setRegNum(rs.getString("regnum"));
+                car.setColor(rs.getString("color"));
+                car.setFuel(rs.getString("fuel"));
+                car.setKmDriven(rs.getInt("km_driven"));
+                car.setGear(rs.getString("gear"));
+                car.setPrice(rs.getDouble("price"));
+                car.setUserEmail(rs.getString("useremail"));
+                car.setPicture(rs.getBytes("picture"));
+                carList.add(car);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // This will help identify any SQL issues
+        }
+        return carList;
+    }
+    
+    public Car getCarById(String id) {
+        Car car = null;
+        try {
+            pStmt = con.prepareStatement("SELECT * FROM \"cars\" WHERE carid = ?");
+            pStmt.setInt(1, Integer.parseInt(id)); // Set parameter correctly
+            rs = pStmt.executeQuery();
+
+            if (rs.next()) { // If a car is found
+                car = new Car();
+                car.setId(rs.getInt("carid"));
+                car.setModel(rs.getString("model"));
+                car.setRegNum(rs.getString("regnum"));
+                car.setColor(rs.getString("color"));
+                car.setFuel(rs.getString("fuel"));
+                car.setKmDriven(rs.getInt("km_driven"));
+                car.setGear(rs.getString("gear"));
+                car.setPrice(rs.getDouble("price"));
+                car.setUserEmail(rs.getString("useremail"));
+                car.setPicture(rs.getBytes("picture"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+        }
+        return car; 
+    }
+    
     private String getQueryWithParameters(PreparedStatement pstmt, String... params) {
         String sql = pstmt.toString(); // Get the SQL string
         for (String param : params) {

@@ -176,13 +176,13 @@
         <%
         if (carList != null && !carList.isEmpty()) {
             for (Car car : carList) {
-    %>
+        %>
                 <div class="car">
                     <img src="data:image/jpeg;base64,<%= car.getBase64Picture() %>" alt="<%= car.getModel() %>">
                     <h2><%= car.getModel() %></h2>
                     <p><%= car.getColor() %></p>
                     <h3>$ <%= car.getPrice() %></h3>
-                    <a href="viewCar?carId=<%= car.getId() %>">More info..</a>
+                    <a href="carDetail.jsp?carId=<%= car.getId() %>">More info..</a>
                 </div>
     <%
             }

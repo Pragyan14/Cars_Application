@@ -1,3 +1,16 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.vit.pojo.Car" %>
+<%@ page import="com.vit.dao.CarDAO" %>
+<%
+    if (session == null || session.getAttribute("name") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+    
+    CarDAO carDAO = new CarDAO();
+    String carIdParam = request.getParameter("carId");
+    Car car = carDAO.getCarById(carIdParam);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,12 +78,12 @@
             font-size: 16px;
         }
 
-        .call-option {
+        .mail-option {
             margin-top: 20px;
             text-align: center;
         }
 
-        .call-option button {
+        .mail-option button {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -80,7 +93,7 @@
             cursor: pointer;
         }
 
-        .call-option button:hover {
+        .mail-option button:hover {
             background-color: #45a049;
         }
 
@@ -98,36 +111,34 @@
         <jsp:include page="Include/Header.jsp" />
 
         <div class="content">
+            <%
+            if (car != null) { // Check if car is not null
+            %>
             <div class="car-details">
-                <img src="https://via.placeholder.com/300" alt="Car Image">
+                <img src="data:image/jpeg;base64,<%= car.getBase64Picture() %>" alt="<%= car.getModel() %>">
                 <div class="details">
-                    <h2>Car Model: Toyota Corolla</h2>
-                    <p><strong>Number:</strong> ABC1234</p>
-                    <p><strong>Color:</strong> Blue</p>
-                    <p><strong>Fuel Type:</strong> Petrol</p>
-                    <p><strong>Km Driven:</strong> 25,000 km</p>
-                    <p><strong>Gear Type:</strong> Automatic</p>
-                    <p><strong>Price:</strong> $20,000</p>
-                    <div class="call-option">
-                        <button id="callButton" onclick="togglePhoneNumber()">Call</button>
+                    <h2>Car Model: <%= car.getModel() %></h2>
+                    <p><strong>Number:</strong> <%= car.getRegNum() %></p>
+                    <p><strong>Color:</strong> <%= car.getColor() %></p>
+                    <p><strong>Fuel Type:</strong> <%= car.getFuel() %></p>
+                    <p><strong>Km Driven:</strong> <%= car.getKmDriven() %> km</p>
+                    <p><strong>Gear Type:</strong> <%= car.getGear() %></p>
+                    <p><strong>Price:</strong> $<%= car.getPrice() %></p>
+                    <div class="mail-option">
+                        <a href="mailto:<%= session.getAttribute("email") %>"><button id="mailButton">Send Mail</button></a>
                     </div>
                 </div>
             </div>
+            <%
+                } else {
+            %>
+                <p>No car found with the provided ID.</p>
+            <%
+                }
+            %>
         </div>
 
         <jsp:include page="Include/Footer.jsp" />
     </div>
-
-    <script>
-        function togglePhoneNumber() {
-            const phoneNumber = document.getElementById('phoneNumber');
-            if (phoneNumber.style.display === "none") {
-                phoneNumber.style.display = "block";
-            } else {
-                phoneNumber.style.display = "none";
-            }
-        }
-    </script>
-
 </body>
 </html>

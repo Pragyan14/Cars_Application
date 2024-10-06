@@ -1,3 +1,19 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.vit.pojo.Car" %>
+<%@ page import="com.vit.dao.CarDAO" %>
+<%
+    
+    CarDAO carDAO = new CarDAO();
+    List<Car> carList; // Declare the carList variable here
+
+    if(request.getParameter("modelName") == null) {
+        carList = carDAO.getCars();
+    } else {
+        carList = carDAO.getCarsbyModel(request.getParameter("modelName")); // Fetch by model
+    }
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,27 +77,32 @@
 <jsp:include page="Include/Header.jsp" />
 <div>
     <div class="searchBar">
-        <form>
+        <form action="" method="get">
             <input type="text" placeholder="Search by model" name="modelName"/>
             <input type="submit" value="Search"/>
         </form>
     </div>
     
     <div class="car-container">
-        <div class="car">
-            <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
-            <h2>Mini Copper</h2>
-            <p>New York, NY</p>
-            <h3>$ 450000</h3>
-            <a href="carDetail.jsp">More Info..</a>
-        </div>
-        <div class="car">
-            <img src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Car 1">
-            <h2>Mini Copper</h2>
-            <p>New York, NY</p>
-            <h3>$ 450000</h3>
-            <a href="carDetail.jsp">More Info..</a>
-        </div>
+        <%
+        if (carList != null && !carList.isEmpty()) {
+            for (Car car : carList) {
+        %>
+            <div class="car">
+                <img src="data:image/jpeg;base64,<%= car.getBase64Picture() %>" alt="<%= car.getModel() %>">
+                <h2><%= car.getModel() %></h2>
+                <p><%= car.getColor() %></p>
+                <h3>$ <%= car.getPrice() %></h3>
+                <a href="carDetail.jsp?carId=<%= car.getId() %>">More info..</a>
+            </div>
+        <%
+                }
+            } else {
+        %>
+                <p>No cars available.</p>
+        <%
+            }
+        %>
     </div>
 </div>
   
