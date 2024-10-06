@@ -9,7 +9,6 @@ package com.vit.pojo;
  * @author SREEJIT BAKSHI
  */
 public class User {
-    private String userId;
     private String userName;
     private String emailId;
     private String password;
@@ -17,8 +16,7 @@ public class User {
     private String state;
     private String phone;
 
-    public User(String userId, String userName, String emailId, String password, String city, String state, String phone) {
-        this.userId = userId;
+    public User(String userName, String emailId, String password, String city, String state, String phone) {
         this.userName = userName;
         this.emailId = emailId;
         this.password = password;
@@ -29,14 +27,6 @@ public class User {
 
     public User() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUserName() {
