@@ -30,7 +30,7 @@ public class UserDAO {
     private UserDAO() {
         try{            
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://pg-3e2bc955-rakeshmeher.i.aivencloud.com:17051/defaultdb?ssl=require&user=avnadmin&password=AVNS_vD-_piUR0bgJFpyhNQo");
+            con = DriverManager.getConnection("jdbc:postgresql://pg-3e2bc955-rakeshmeher.i.aivencloud.com:17051/CarAppDB?ssl=require&user=avnadmin&password=AVNS_vD-_piUR0bgJFpyhNQo");
             System.out.println("Connection Object--------->"+con);
             stmt=con.createStatement();
         }
@@ -41,13 +41,14 @@ public class UserDAO {
     
     public boolean executeInsert(User user){
         try{
-            pStmt = con.prepareStatement("insert into \"user\" (\"userName\", \"emailId\", \"password\", \"city\", \"state\", \"phone\") values(?,?,?,?,?,?)");
+            pStmt = con.prepareStatement("insert into \"users\" (username, emailid, password, city, state, phone) values(?,?,?,?,?,?)");
             pStmt.setString(1,user.getUserName());
             pStmt.setString(2,user.getEmailId());
             pStmt.setString(3,user.getPassword());
             pStmt.setString(4,user.getCity());
             pStmt.setString(5,user.getState());
             pStmt.setString(6,user.getPhone());
+            System.out.println(getQueryWithParameters(pStmt, user.getUserName(), user.getEmailId(), user.getPassword(), user.getCity(), user.getState(), user.getPhone()));
             int rowCount= pStmt.executeUpdate();
             if(rowCount >0){
                 return true;
@@ -58,5 +59,12 @@ public class UserDAO {
             e.printStackTrace();
         }
         return false;
+    }
+    private static String getQueryWithParameters(PreparedStatement pstmt, String... params) {
+        String sql = pstmt.toString(); // This will print the SQL string with "?" placeholders
+        for (String param : params) {
+            sql = sql.replaceFirst("\\?", "'" + param + "'"); // Replace the first occurrence of "?" with the parameter
+        }
+        return sql;
     }
 }
