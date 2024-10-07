@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet {
     
     @Override
     public void init() {
-        // Initialize the UserDAO singleton instance
         this.userDAO = UserDAO.getInstance();
     }
 
@@ -83,7 +82,7 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        ResultSet rs = null; // Initialize ResultSet
+        ResultSet rs = null;
         try {
             rs = userDAO.executeSelect(email, password);
 

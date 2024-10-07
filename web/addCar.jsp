@@ -16,54 +16,54 @@
     
     <style>
         body {
-            font-family: cursive; /* Set a base font */
-            background-color: #f9f9f9; /* Light background color */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Add padding around the body */
+            font-family: cursive;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
         }
         <jsp:include page="Include/header_footer_css.jsp" />
         .container {
-            max-width: 600px; /* Limit container width */
-            margin: 0 auto; /* Center the form */
-            background-color: #fff; /* White background for the form */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
-            padding: 20px; /* Padding inside the container */
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
         h2 {
-            text-align: center; /* Center the title */
-            color: #333; /* Title color */
+            text-align: center;
+            color: #333; 
         }
 
         form {
-            display: flex; /* Use flexbox for layout */
-            flex-direction: column; /* Stack form elements vertically */
+            display: flex; 
+            flex-direction: column; 
         }
 
         label {
-            margin-bottom: 5px; /* Space between label and input */
-            color: #666; /* Label color */
+            margin-bottom: 5px; 
+            color: #666; 
         }
 
         input[type="text"],
         input[type="file"],
         input[type="number"] {
-            padding: 10px; /* Padding inside input fields */
-            margin-bottom: 15px; /* Space below input fields */
-            border: 1px solid #ddd; /* Border around input fields */
-            border-radius: 5px; /* Rounded corners */
-            font-size: 14px; /* Font size for input fields */
+            padding: 10px;
+            margin-bottom: 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 5px;
+            font-size: 14px;
         }
 
         button {
-            padding: 10px; /* Padding inside button */
-            background-color: #4CAF50; /* Green background */
-            color: white; /* White text */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Rounded corners */
-            font-size: 16px; /* Font size for button */
-            cursor: pointer; /* Pointer cursor on hover */
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none; 
+            border-radius: 5px; 
+            font-size: 16px; 
+            cursor: pointer;
         }
 
         button:hover {

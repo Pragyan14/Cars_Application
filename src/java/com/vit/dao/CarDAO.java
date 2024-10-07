@@ -91,7 +91,7 @@ public class CarDAO {
                 carList.add(car);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // This will help identify any SQL issues
+            e.printStackTrace();
         }
         return carList;
     }
@@ -116,7 +116,7 @@ public class CarDAO {
                 carList.add(car);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // This will help identify any SQL issues
+            e.printStackTrace();
         }
         return carList;
     }
@@ -142,7 +142,7 @@ public class CarDAO {
                 carList.add(car);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // This will help identify any SQL issues
+            e.printStackTrace();
         }
         return carList;
     }
@@ -151,10 +151,10 @@ public class CarDAO {
         Car car = null;
         try {
             pStmt = con.prepareStatement("SELECT * FROM \"cars\" WHERE carid = ?");
-            pStmt.setInt(1, Integer.parseInt(id)); // Set parameter correctly
+            pStmt.setInt(1, Integer.parseInt(id));
             rs = pStmt.executeQuery();
 
-            if (rs.next()) { // If a car is found
+            if (rs.next()) { 
                 car = new Car();
                 car.setId(rs.getInt("carid"));
                 car.setModel(rs.getString("model"));
@@ -174,9 +174,9 @@ public class CarDAO {
     }
     
     private String getQueryWithParameters(PreparedStatement pstmt, String... params) {
-        String sql = pstmt.toString(); // Get the SQL string
+        String sql = pstmt.toString(); 
         for (String param : params) {
-            sql = sql.replaceFirst("\\?", "'" + param + "'"); // Replace placeholders
+            sql = sql.replaceFirst("\\?", "'" + param + "'"); 
         }
         return sql;
     }

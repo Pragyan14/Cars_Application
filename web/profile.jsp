@@ -11,7 +11,6 @@
     String userEmail = (String) session.getAttribute("email");
     System.out.println("User email from session: " + userEmail);
 
-    // Create an instance of CarDAO and fetch the cars for the logged-in user
     CarDAO carDAO = new CarDAO();
     List<Car> carList = carDAO.getCarsByUserEmail(userEmail);
 
@@ -32,7 +31,6 @@
         }
         <jsp:include page="Include/header_footer_css.jsp" />
          
-        /* Profile Section */
         .profile-container {
             display: flex;
             background-color: #fff;
@@ -82,67 +80,66 @@
         }
 
         .add-car-button {
-            background-color: #4CAF50; /* Green background */
-            color: white; /* White text */
-            padding: 10px 20px; /* Padding for the button */
-            font-size: 16px; /* Font size */
-            border: none; /* No border */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor on hover */
-            text-decoration: none; /* Remove underline */
-            display: inline-block; /* Make it an inline-block for proper spacing */
-            text-align: center; /* Center text */
+            background-color: #4CAF50; 
+            color: white; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            text-decoration: none;
+            display: inline-block; 
+            text-align: center; 
 }
 
         .add-car-button:hover {
             background-color: #45a049;
         }
 
-        /* Car Cards Section */
         .car-container {
-            display: grid; /* Use CSS Grid layout */
-            grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-            gap: 20px; /* Space between cards */
-            width: 100%; /* Limit container width */
-            margin: 0 auto; /* Center the grid */
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px; 
+            width: 100%;
+            margin: 0 auto;
             height: 90vh;
         }
         
         .car {
-            border: 1px solid #ddd; /* Border around the card */
-            padding: 10px; /* Padding inside the card */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
-            background-color: #fff; /* Card background color */
+            border: 1px solid #ddd; 
+            padding: 10px; 
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff; 
             height: 280px;
         }
         
         .car img {
-            width: 100%; /* Full width of the card */
-            height: 150px; /* Fixed height for images */
-            object-fit: cover; /* Cover the entire image area */
-            border-radius: 10px 10px 0 0; /* Rounded corners on the top */
+            width: 100%; 
+            height: 150px; 
+            object-fit: cover;
+            border-radius: 10px 10px 0 0; 
         }
         
         .car h2 {
-            font-size: 18px; /* Title font size */
-            margin-top: 10px; /* Space above title */
+            font-size: 18px;
+            margin-top: 10px; 
         }
         
         .car p {
-            font-size: 14px; /* Paragraph font size */
-            color: #666; /* Text color */
+            font-size: 14px; 
+            color: #666;
         }
 
         @media (max-width: 768px) {
             .car-cards-container {
-                grid-template-columns: repeat(2, 1fr); /* Display 2 cards per row on smaller screens */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 480px) {
             .car-cards-container {
-                grid-template-columns: 1fr; /* Display 1 card per row on very small screens */
+                grid-template-columns: 1fr; 
             }
         }
     </style>
@@ -150,11 +147,9 @@
 <body>
     <jsp:include page="Include/Header.jsp" />
 
-    <!-- Profile Section -->
     <div class="profile-container">
         <div class="profile-left">
             <div class="profile-circle">
-                <!-- First name initial, can be dynamic using Java/JSP -->
                 <span><%= ((String) session.getAttribute("name")).charAt(0) %></span>
             </div>
         </div>
@@ -166,12 +161,10 @@
                 <p><strong>City:</strong> <%= session.getAttribute("city") %></p>
                 <p><strong>State:</strong> <%= session.getAttribute("state") %></p>
             </div>
-            <!-- Add Car button -->
             <a href="addCar.jsp" class="add-car-button">Add Car</a>
         </div>
     </div>
 
-    <!-- Car Cards Section -->
     <div class="car-container">
         <%
         if (carList != null && !carList.isEmpty()) {

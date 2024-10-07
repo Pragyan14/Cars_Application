@@ -25,7 +25,6 @@ public class SignUpServlet extends HttpServlet {
     
     @Override
     public void init() {
-        // Initialize the UserDAO singleton instance
         this.userDAO = UserDAO.getInstance();
     }
 
@@ -84,10 +83,8 @@ public class SignUpServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
 
-            // Retrieve form data and create a new User object
             User user = new User(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"), request.getParameter("city"), request.getParameter("state"), request.getParameter("number"));
 
-            // Use userDAO to insert the user
             boolean hasInserted = userDAO.executeInsert(user);
             
             if (hasInserted) {

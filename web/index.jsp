@@ -17,7 +17,6 @@
             background-image: url('https://images.pexels.com/photos/3422964/pexels-photo-3422964.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
             background-size: 100% ;
             background-position: center;
-            /* background-color: #243642; */
             color:#243642;
             text-align: center;
             padding: 100px 20px;

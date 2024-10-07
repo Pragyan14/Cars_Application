@@ -28,7 +28,6 @@ public class AddCarServlet extends HttpServlet {
     
     @Override
     public void init() {
-        // Initialize the UserDAO singleton instance
         this.carDAO = CarDAO.getInstance();
     }
 
@@ -98,10 +97,8 @@ public class AddCarServlet extends HttpServlet {
                 }
             }
 
-            // Retrieve form data and create a new User object
             Car car = new Car(request.getParameter("carModel"), request.getParameter("regNumber"), request.getParameter("carColor"), request.getParameter("fuelType"), Integer.parseInt(request.getParameter("kmDriven")), request.getParameter("gearType"), Double.parseDouble(request.getParameter("price")), (String) session.getAttribute("email"), imageBytes);
 
-             // Use carDAO to insert the car
             boolean hasInserted = carDAO.executeInsert(car);
             
             if (hasInserted) {

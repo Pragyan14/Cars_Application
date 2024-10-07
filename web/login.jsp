@@ -1,4 +1,11 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    if (!(session == null || session.getAttribute("name") == null && session.getAttribute("email") == null))
+    {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -73,26 +80,26 @@
             }
 
             .login-container input[type="submit"]:hover {
-                background-color: #218838; /* Darker green on hover */
+                background-color: #218838;
             }
  
             .signup-button {
                display: inline-block;
-               margin-top: 15px; /* Space above the button */
+               margin-top: 15px; 
                padding: 15px;
                width: 100%;
-               background-color: #007bff; /* Blue background */
+               background-color: #007bff; 
                color: white;
                border: none;
                border-radius: 8px;
                cursor: pointer;
                font-size: 18px;
                text-align: center;
-               text-decoration: none; /* Remove underline */
+               text-decoration: none; 
             }
 
             .signup-button:hover {
-                background-color: #0056b3; /* Darker blue on hover */
+                background-color: #0056b3; 
             }
 
 
@@ -106,17 +113,15 @@
                 background-color: #f1f1f1;
                 padding: 10px;
                 text-align: center;
-                margin-top: auto; /* Push footer to the bottom */
+                margin-top: auto;
             }
 
         </style>
     </head>
     <body>
         <div class="container">
-            <!-- Include the header -->
             <jsp:include page="Include/Header.jsp" />
 
-            <!-- Main login content -->
             <div class="content">
                 <div class="login-container">
                     <h2 class="form-title">Login</h2>
@@ -134,7 +139,6 @@
                 </div>
             </div>
 
-            <!-- Include the footer -->
             <jsp:include page="Include/Footer.jsp" />
         </div>
     </body>

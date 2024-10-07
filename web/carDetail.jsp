@@ -101,7 +101,7 @@
             background-color: #f1f1f1;
             padding: 10px;
             text-align: center;
-            margin-top: auto; /* Push footer to the bottom */
+            margin-top: auto;
         }
     </style>
 </head>
@@ -112,7 +112,7 @@
 
         <div class="content">
             <%
-            if (car != null) { // Check if car is not null
+            if (car != null) {
             %>
             <div class="car-details">
                 <img src="data:image/jpeg;base64,<%= car.getBase64Picture() %>" alt="<%= car.getModel() %>">

@@ -75,9 +75,9 @@ public class UserDAO {
         return null;
     }
     private String getQueryWithParameters(PreparedStatement pstmt, String... params) {
-        String sql = pstmt.toString(); // Get the SQL string
+        String sql = pstmt.toString(); 
         for (String param : params) {
-            sql = sql.replaceFirst("\\?", "'" + param + "'"); // Replace placeholders
+            sql = sql.replaceFirst("\\?", "'" + param + "'");
         }
         return sql;
     }
