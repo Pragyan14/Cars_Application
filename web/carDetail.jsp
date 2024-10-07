@@ -125,7 +125,7 @@
                     <p><strong>Gear Type:</strong> <%= car.getGear() %></p>
                     <p><strong>Price:</strong> $<%= car.getPrice() %></p>
                     <div class="mail-option">
-                        <a href="mailto:<%= session.getAttribute("email") %>"><button id="mailButton">Send Mail</button></a>
+                        <a href="mailto:<%= car.getUserEmail() %>"><button id="mailButton">Send Mail</button></a>
                     </div>
                 </div>
             </div>
